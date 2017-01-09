@@ -34,6 +34,7 @@ easyRsaTarFile=$(basename $easyRsaSrc)
 outSrvDir=~/ansible/roles/openvpnServer/files
 outClDir=~/ansible/roles/openvpnServer/files
 
+# List servers and clients to generate certificate/key pairs for
 serverLst="server1 server2"
 clientLst="client1 client2 phone1"
 

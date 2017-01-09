@@ -1,0 +1,8 @@
+---
+- name: configure openVpnServer
+  hosts: openvpnServers
+  remote_user: root
+  become: yes
+  
+  roles:
+  - openvpnServer
