@@ -25,7 +25,7 @@ Directory structure:<br>
 * Create Hosts file - listing your OpenVpn server(s)<br>
   `cd openVpnServer`<br>
   `vi hosts`<br>
-  ```
+```
   [openvpnServers]
   server1
   server2
