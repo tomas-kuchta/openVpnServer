@@ -39,7 +39,6 @@ Directory structure:<br>
     cd ~
     ./openVpnServer/scripts/README_easy-rsa_openvpn.bash
 ```
-
    If successful the scrip will create and stage following files to openVpnServer/roles/openvpnServer/files:<br>
 
 ```
