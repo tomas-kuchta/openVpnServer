@@ -12,9 +12,9 @@ Note: Change: dns_1 and dns_2 variables if you do not want to use Google DNS, th
   One will act as openVpn server and one will act as client and for running Ansible
 
 ## Example Use:
-This guide assumes working directory: ~
+This guide assumes working directory: ~<br>
 Directory structure:<br>
-  openVpnServer - openVpnServer git repository and Ansible working directory<br>
+&nbsp;openVpnServer - openVpnServer git repository and Ansible working directory<br>
   easy-rsa      - directory for CA and certificate/key generation
 
 * Install Ansible:
