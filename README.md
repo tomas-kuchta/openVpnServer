@@ -18,13 +18,13 @@ Directory structure:<br>
 &nbsp;&nbsp;easy-rsa      - directory for CA and certificate/key generation
 
 * Install Ansible:
-  * zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.1/ systemsmanagement
-  * zypper install ansible
+  * `zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.1/ systemsmanagement`
+  * `zypper install ansible`
 * Clone openVpnServer repository
-  * git clone https://github.com/tomas-kuchta/openVpnServer.git
+  * `git clone https://github.com/tomas-kuchta/openVpnServer.git`
 * Create Hosts file - listing your OpenVpn server(s)
-  * cd openVpnServer
-  * vi hosts
+  * `cd openVpnServer`
+  * `vi hosts`
   ```
   [openvpnServers]
   server1
