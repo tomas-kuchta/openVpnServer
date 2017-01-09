@@ -110,7 +110,7 @@ Directory structure:<br>
 * On Linux using NetworkMamager:
   * Import configuration to NetworkManager --> Connection Editor --> File --> Import VPN:<br>
     Select `clientName.ovpn` file
-  * Test Connection
+  * Test the VPN Connection
 * On Linux using openvpn<br>
   ```
   cd ~/openVpnClient_clientName_config
