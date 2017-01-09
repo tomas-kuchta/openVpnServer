@@ -41,15 +41,15 @@ cd ~
 ```
     If successful the scrip will create and stage following files to openVpnServer/roles/openvpnServer/files:<br>
 ```
-ca.crt
-ca.key
-dh2048.pem
-ta.key
-server1.crt
-server1.key
-....
-client1.crt
-client1.key
+    ca.crt
+    ca.key
+    dh2048.pem
+    ta.key
+    server1.crt
+    server1.key
+    ....
+    client1.crt
+    client1.key
 ....
 ```
 * Test Ansible connectivity to future openVpn server(s)
