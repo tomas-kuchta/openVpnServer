@@ -63,7 +63,7 @@ Directory structure:<br>
   Assuming:
   * the user executing Ansible knows their password to connect to openvpnServers
   * the user executing Ansible knows password needed to become root (as by sudo command)<br>
-  'ansible-playbook -i hosts -b -k -K openVpnServer.yml'<br>
+  `ansible-playbook -i hosts -b -k -K openVpnServer.yml`<br>
   You should see configuration progress with SUCCESS responses for each step.
 
 ## Connecting to Configured OpenVpn server(s) from client commputer(s), phones, etc.
