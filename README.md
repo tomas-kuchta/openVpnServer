@@ -74,9 +74,9 @@ Directory structure:<br>
   mkdir openVpnClient_clientName_config
   cd openVpnClient_clientName_config
   ```
-  * Create client configuration file:
+  * Create client configuration file:<br>
+    `vi clientName.ovpn`<br>
     ```
-    vi clientName.ovpn
     client
     dev tun
     proto udp
