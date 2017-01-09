@@ -1,0 +1,71 @@
+---
+# tasks file for openvpnServer
+# https://www.howtoforge.com/tutorial/how-to-install-and-configure-open-vpn-on-opensuse-leap-42.1/
+# https://en.opensuse.org/SDB:OpenVPN_Installation_and_Setup
+
+
+- name: Make sure TUN/TAP is installed and enabled
+  stat: path=/dev/net/tun
+  register: tun
+- name: Print Error and exit
+  fail: msg='ERROR Please enable /dev/net/tun'
+  when: not tun.stat.exists
+
+- name: Install openvpn
+  zypper: name={{item}} state=present
+  with_items:
+  - openvpn
+
+# Generate keys by following or executing README_easy-rsa_openvpn
+- name: Create server key directory
+  file: path={{openVpnServer.keyDir}} state=directory owner=root group=root mode=0600
+- name: Stage server certificates
+  copy: src={{item.src}} dest={{item.dest}} owner={{item.owner}} group={{item.group}} mode={{item.mode}}
+  with_items:
+  - {src: "ca.crt",                   dest: "{{openVpnServer.keyDir}}/ca.crt",                   owner: root, group: root, mode: "400"}
+  - {src: "{{ansible_hostname}}.crt", dest: "{{openVpnServer.keyDir}}/{{ansible_hostname}}.crt", owner: root, group: root, mode: "400"}
+  - {src: "{{ansible_hostname}}.key", dest: "{{openVpnServer.keyDir}}/{{ansible_hostname}}.key", owner: root, group: root, mode: "400"}
+  - {src: "dh2048.pem",               dest: "{{openVpnServer.keyDir}}/dh2048.pem",               owner: root, group: root, mode: "400"}
+  - {src: "ta.key",                   dest: "{{openVpnServer.keyDir}}/ta.key",                   owner: root, group: root, mode: "400"}
+
+- name: Configure SuSE Firewall2 - custom FW rule script
+  blockinfile:
+    dest: /etc/sysconfig/scripts/SuSEfirewall2-custom
+    marker: "# {mark} ANSIBLE MANAGED BLOCK openvpn"
+    insertafter: 'fw_custom_after_chain_creation()'
+    block: |
+      iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+      iptables -A FORWARD -s {{openVpnServer.internalIp}}/24 -j ACCEPT
+      iptables -A FORWARD -j REJECT
+      #iptables -t nat -A POSTROUTING -s {{openVpnServer.internalIp}}/24 -j SNAT --to {{ansible_default_ipv4.address}}
+      iptables -t nat -A POSTROUTING -s {{openVpnServer.internalIp}}/24 -o eth0 -j MASQUERADE
+    state: present
+- name: Configure SuSE Firewall2 - yast FW commands
+  command: "{{item}}"
+  with_items:
+  - "/sbin/yast firewall enable"
+  - "/sbin/yast firewall startup atboot"
+  - "/sbin/yast firewall services add {{openVpnServer.proto}}port={{openVpnServer.port}} zone=EXT"
+  - "/sbin/yast firewall interfaces add interface={{openVpnServer.tunDev}} zone=INT"
+- name: Configure SuSE Firewall2 - FW config file
+  lineinfile: dest=/etc/sysconfig/SuSEfirewall2 regexp={{item.regexp}} line={{item.line}} state=present
+  with_items:
+  - {regexp: 'FW_ROUTE=', line: 'FW_ROUTE="yes"'}
+  - {regexp: 'FW_CUSTOMRULES=', line: 'FW_CUSTOMRULES="/etc/sysconfig/scripts/SuSEfirewall2-custom"'}
+  notify: restart firewall
+
+- name: Enable IPv4 forwarding
+  sysctl: name=net.ipv4.ip_forward value=1 sysctl_set=yes reload=yes state=present
+
+- name: Configure OpenVpn Server - config file
+  template: src=serverRouted.conf.j2 dest="{{openVpnServer.etcDir}}/server.conf"
+- name: Configure OpenVpn Server - create log directory
+  file: path={{item.path}} state={{item.state}} owner=root group=root mode=0600
+  with_items:
+  - {path: "{{openVpnServer.logDir}}",                    state: directory}
+  - {path: "{{openVpnServer.logDir}}/openvpn.log",        state: touch}
+  - {path: "{{openVpnServer.logDir}}/openvpn-status.log", state: touch}
+  notify:
+  - restart openvpn
+- name: Configure OpenVpn Server - Ensure that openvpn service is enabled and started
+  systemd: name=openvpn@server.service enabled=yes state=started

@@ -1,0 +1,14 @@
+---
+# vars file for openvpnServer
+openVpnServer:
+  port:         1194
+  proto:        udp
+  tunDev:       tun0
+  internalIp:   10.10.2.0
+  internalMask: 255.255.255.0
+  dns_1:        8.8.8.8
+  dns_2:        8.8.4.4
+  etcDir:       /etc/openvpn
+  keyDir:       /etc/openvpn/keys
+  logDir:       /var/log/openvpn
+

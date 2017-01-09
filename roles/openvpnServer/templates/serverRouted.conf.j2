@@ -1,0 +1,62 @@
+# Open VPN Server Configuration
+# {{ ansible_managed }}
+#jinja2:trim_blocks: False
+
+#change with your port
+port {{openVpnServer.port}}
+ 
+#You can use udp or tcp
+proto {{openVpnServer.proto}}
+ 
+# "dev tun" will create a routed IP tunnel.
+dev tun
+ 
+#Certificate Configuration
+ 
+#ca certificate
+ca {{openVpnServer.keyDir}}/ca.crt
+ 
+#Server Certificate
+cert {{openVpnServer.keyDir}}/{{ansible_hostname}}.crt
+ 
+#Server Key and keep this is secret
+key {{openVpnServer.keyDir}}/{{ansible_hostname}}.key
+ 
+#See the size a dh key in /etc/openvpn/keys/
+dh {{openVpnServer.keyDir}}/dh2048.pem
+
+#Static shared-secret key for client tls-auth
+tls-auth {{openVpnServer.keyDir}}/ta.key 0
+
+#Internal IP will get when already connect
+server {{openVpnServer.internalIp}} {{openVpnServer.internalMask}}
+ 
+#this line will redirect all traffic through our OpenVPN
+#push "redirect-gateway def1 bypass-dhcp"
+push "redirect-gateway local"
+
+#Provide DNS servers to the client, you can use goolge DNS
+push "dhcp-option DNS {{openVpnServer.dns_1}}"
+push "dhcp-option DNS {{openVpnServer.dns_2}}"
+ 
+#Enable multiple client to connect with same key
+#duplicate-cn
+ 
+cipher AES-256-CBC
+#auth SHA512
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
+
+keepalive 20 60
+comp-lzo
+persist-key
+persist-tun
+daemon
+ 
+#openvpn status log
+status {{openVpnServer.logDir}}/openvpn-status.log
+ 
+#enable log
+log-append {{openVpnServer.logDir}}/openvpn.log
+ 
+#Log Level
+verb 3

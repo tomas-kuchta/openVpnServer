@@ -1,0 +1,8 @@
+---
+# handlers file for openvpnServer
+
+- name: restart openvpn
+  systemd: name=openvpn@server.service enabled=yes state=restarted
+
+- name: restart firewall
+  systemd: name=SuSEfirewall2.service enabled=yes state=restarted
