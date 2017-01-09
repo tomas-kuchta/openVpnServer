@@ -100,19 +100,22 @@ Directory structure:<br>
     tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
     comp-lzo
     ```
-  * Copy keys and certificates from ~/openVpnServer/roles/openvpnServer/files:
+  * Copy keys and certificates from `~/openVpnServer/roles/openvpnServer/files`:
+    ```
     ca.crt
     ta.key
     clientName.crt
     clientName.key
+    ```
 * On Linux using NetworkMamager:
-  * Import configuration to NetworkManager --> Connection Editor --> File --> Import VPN
-    Select clientName.ovpn file
+  * Import configuration to NetworkManager --> Connection Editor --> File --> Import VPN<br>
+    Select `clientName.ovpn` file
   * Test Connection
 * On Linux using openvpn
+  ```
   cd ~/openVpnClient_clientName_config
   sudo openvpn --config clientName.ovpn
-
+  ```
 
 
 
