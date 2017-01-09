@@ -35,10 +35,8 @@ Directory structure:<br>
     `vi scripts/README_easy-rsa_openvpn.bash`<br>
     Edit variables: `serverLst` and `clientLst`<br>
   * Execute `README_easy-rsa_openvpn.bash` and follow instructions
-```
-    cd ~
-    ./openVpnServer/scripts/README_easy-rsa_openvpn.bash
-```
+    `cd ~`<br>
+    `./openVpnServer/scripts/README_easy-rsa_openvpn.bash`<br>
    If successful the scrip will create and stage following files to openVpnServer/roles/openvpnServer/files:<br>
 
 ```
