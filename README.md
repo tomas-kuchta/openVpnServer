@@ -114,7 +114,6 @@ Directory structure:<br>
 * On Linux using openvpn<br>
   ```
   cd ~/openVpnClient_clientName_config
-  ```
   sudo openvpn --config clientName.ovpn
   ```
 
