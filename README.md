@@ -34,12 +34,15 @@ Directory structure:
   ```
 * Generate CA and openVpn server + client certificates and keys
   * List your OpenVpn servers and clients in openVpnServer/scripts/README_easy-rsa_openvpn.bash<br>
-    vi scripts/README_easy-rsa_openvpn.bash
-    Edit variables: serverLst and clientLst
+    vi scripts/README_easy-rsa_openvpn.bash<br>
+    Edit variables: serverLst and clientLst<br>
   * Execute README_easy-rsa_openvpn.bash and follow instructions
+    ```
     cd ~
     ./openVpnServer/scripts/README_easy-rsa_openvpn.bash
+    ```
     If successful the scrip will create and stage following files to openVpnServer/roles/openvpnServer/files:
+    ```
     ca.crt
     ca.key
     dh2048.pem
@@ -50,6 +53,7 @@ Directory structure:
     client1.crt
     client1.key
     ....
+    ```
 * Test Ansible connectivity to future openVpn server(s)
   cd ~/openVpnServer
   ansible openvpnServers -i hosts -m ping
