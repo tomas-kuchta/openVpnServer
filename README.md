@@ -14,8 +14,8 @@ Note: Change: dns_1 and dns_2 variables if you do not want to use Google DNS, th
 ## Example Use:
 This guide assumes working directory: ~
 Directory structure:
-- openVpnServer - openVpnServer git repository and Ansible working directory
-- easy-rsa - directory for CA and certificate/key generation
+  openVpnServer - openVpnServer git repository and Ansible working directory
+  easy-rsa - directory for CA and certificate/key generation
 
 * Install Ansible:
   * zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.1/ systemsmanagement
