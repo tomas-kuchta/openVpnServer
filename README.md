@@ -27,9 +27,11 @@ Directory structure:
 * Create Hosts file - listing your OpenVpn server(s)
   * cd openVpnServer
   * vi hosts
-  > [openvpnServers]
-  > server1
-  > server2
+  ```
+  [openvpnServers]
+  server1
+  server2
+  ```
 * Generate CA and openVpn server + client certificates and keys
   * List your OpenVpn servers and clients in openVpnServer/scripts/README_easy-rsa_openvpn.bash
     vi scripts/README_easy-rsa_openvpn.bash
