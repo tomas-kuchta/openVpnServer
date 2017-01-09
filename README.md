@@ -5,7 +5,7 @@ Configure OpenVpn Server on openSuSE 42.1/42.2 using Ansible
 OpenVpn server(s) will be configured as NAT routers for the connecting clients.
 Clients will be assigned IPs in range defined by internalIp in roles/openvpnServer/vars/main.yml
 
-Note: Change: dns_1 and dns_2 variables if you do not want to use Google DNS, thus shring your browsing habits with Google.
+Note: Change: dns_1 and dns_2 variables if you do not want to use Google DNS, thus sharing your browsing habits with Google.
 
 ## Prerequisites:
 * At least two computers with openSuse 42.x installed and configured with shh working
