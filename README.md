@@ -75,6 +75,7 @@ Directory structure:<br>
   cd openVpnClient_clientName_config
   ```
   * Create client configuration file:
+    ```
     vi clientName.ovpn
     client
     dev tun
@@ -98,6 +99,7 @@ Directory structure:<br>
     #auth SHA512
     tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
     comp-lzo
+    ```
   * Copy keys and certificates from ~/openVpnServer/roles/openvpnServer/files:
     ca.crt
     ta.key
