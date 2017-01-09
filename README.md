@@ -54,10 +54,10 @@ Directory structure:<br>
     ....
 ```
 * Test Ansible connectivity to future openVpn server(s)
-  ```
+```
   cd ~/openVpnServer
   ansible openvpnServers -i hosts -m ping
-  ```
+```
   You should see SUCCESS response from all openvpnServers listed in the hosts file
 * Configure OpenVpn server(s)
   Assuming:
