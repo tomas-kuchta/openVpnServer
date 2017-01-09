@@ -17,6 +17,7 @@ Directory structure:
  - openVpnServer - openVpnServer git repository and Ansible working directory
  - easy-rsa - directory for CA and certificate/key generation
 
+
 * Install Ansible:
   * zypper addrepo http://download.opensuse.org/repositories/systemsmanagement/openSUSE_Leap_42.1/ systemsmanagement
   * zypper install ansible
