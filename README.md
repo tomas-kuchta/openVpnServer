@@ -36,8 +36,8 @@ Directory structure:<br>
     Edit variables: `serverLst` and `clientLst`<br>
   * Execute `README_easy-rsa_openvpn.bash` and follow instructions<br>
 ```
-cd ~
-./openVpnServer/scripts/README_easy-rsa_openvpn.bash
+    cd ~
+    ./openVpnServer/scripts/README_easy-rsa_openvpn.bash
 ```
     If successful the scrip will create and stage following files to openVpnServer/roles/openvpnServer/files:<br>
 ```
@@ -50,7 +50,7 @@ cd ~
     ....
     client1.crt
     client1.key
-....
+    ....
 ```
 * Test Ansible connectivity to future openVpn server(s)
   cd ~/openVpnServer
