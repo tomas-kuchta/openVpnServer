@@ -102,10 +102,10 @@ Directory structure:<br>
     ```
   * Copy keys and certificates from `~/openVpnServer/roles/openvpnServer/files`:<br>
    ```
-   ca.crt
-   ta.key
-   clientName.crt
-   clientName.key
+    ca.crt
+    ta.key
+    clientName.crt
+    clientName.key
    ```
 * On Linux using NetworkMamager:
   * Import configuration to NetworkManager --> Connection Editor --> File --> Import VPN:<br>
