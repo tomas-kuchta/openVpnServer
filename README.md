@@ -33,7 +33,7 @@ Directory structure:
   server2
   ```
 * Generate CA and openVpn server + client certificates and keys
-  * List your OpenVpn servers and clients in openVpnServer/scripts/README_easy-rsa_openvpn.bash
+  * List your OpenVpn servers and clients in openVpnServer/scripts/README_easy-rsa_openvpn.bash --
     vi scripts/README_easy-rsa_openvpn.bash
     Edit variables: serverLst and clientLst
   * Execute README_easy-rsa_openvpn.bash and follow instructions
