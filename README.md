@@ -67,11 +67,13 @@ Directory structure:<br>
   You should see configuration progress with SUCCESS responses for each step.
 
 ## Connecting to Configured OpenVpn server(s) from client commputer(s), phones, etc.
-* Create client configuration directory for config. file and and needed keys and certificates
-  Note: replace clientName/serverName for your true client/server machine name as you used in README_easy-rsa_openvpn.bash
+* Create client configuration directory for config. file and and needed keys and certificates<br>
+  Note: replace clientName/serverName for your true client/server machine name as you used in `README_easy-rsa_openvpn.bash`<br>
+  ```
   cd ~
   mkdir openVpnClient_clientName_config
   cd openVpnClient_clientName_config
+  ```
   * Create client configuration file:
     vi clientName.ovpn
     client
