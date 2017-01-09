@@ -112,10 +112,8 @@ Directory structure:<br>
     Select `clientName.ovpn` file
   * Test the VPN Connection
 * On Linux using openvpn<br>
-  ```
-  cd ~/openVpnClient_clientName_config
-  sudo openvpn --config clientName.ovpn
-  ```
+  `cd ~/openVpnClient_clientName_config`<br>
+  `sudo openvpn --config clientName.ovpn`
 
 
 
