@@ -46,7 +46,7 @@
   - "/sbin/yast firewall enable"
   - "/sbin/yast firewall startup atboot"
   - "/sbin/yast firewall services add {{openVpnServer.proto}}port={{openVpnServer.port}} zone=EXT"
-  - "/sbin/yast firewall interfaces add interface={{openVpnServer.tunDev}} zone=INT"
+  - "/sbin/yast firewall interfaces add interface={{openVpnServer.tunDev}} zone=EXT"
 - name: Configure SuSE Firewall2 - FW config file
   lineinfile: dest=/etc/sysconfig/SuSEfirewall2 regexp={{item.regexp}} line={{item.line}} state=present
   with_items:
